@@ -10,6 +10,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import org.springframework.lang.NonNull;
+
 @Entity
 public class Dog {
 
@@ -17,6 +19,7 @@ public class Dog {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
+	@NonNull
 	private String name;
 	
 	@ManyToOne(optional = true)

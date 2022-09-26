@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import org.springframework.lang.NonNull;
+
 @Entity
 public class Toy {
 
@@ -15,7 +17,9 @@ public class Toy {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
+	@NonNull
 	private String label;
+	@NonNull
 	private String type;
 	
 	@ManyToMany(mappedBy = "toys")

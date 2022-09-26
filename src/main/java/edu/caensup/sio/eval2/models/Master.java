@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.springframework.lang.NonNull;
+
 @Entity
 public class Master {
 
@@ -15,7 +17,9 @@ public class Master {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
+	@NonNull
 	private String firstname;
+	@NonNull
 	private String lastname;
 	
 	@OneToMany(mappedBy = "master")

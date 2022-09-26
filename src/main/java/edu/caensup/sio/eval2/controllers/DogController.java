@@ -33,7 +33,7 @@ public class DogController {
 	public RedirectView addDogMaster(@ModelAttribute Dog dog, @PathVariable Master id) {
 		dog.setMaster(id);
 		DogDAO.save(dog);
-		return new RedirectView("/master/index");
+		return new RedirectView("/master/{id}");
 		
 	}
 	
