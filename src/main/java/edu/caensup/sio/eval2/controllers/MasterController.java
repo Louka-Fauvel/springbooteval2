@@ -33,6 +33,7 @@ public class MasterController {
 	
 	@GetMapping("/add")
 	public String addMaster(ModelMap model) {
+		
 		model.put("master", new Master());
 		return "/masters/form";
 		
