@@ -1,0 +1,29 @@
+{{> /partials/header }}
+
+<h1>Maîtres</h1>
+
+<a href="/master/index" class="ui purple icon button">
+	<i class="angle left icon"></i>
+</a>
+
+{{#master}}
+<form class="ui form" method="post" action="/master/add">
+
+  <div class="field">
+	<label>Prénom</label>
+    <input type="text" name="firstname" placeholder="Prénom" value="{{firstname}}" required>
+  </div>
+
+  <div class="field">
+    <label>Nom</label>
+    <input type="text" name="lastname" placeholder="Nom" value="{{lastname}}" required>
+  </div>
+  
+  <input type="hidden" name="id" value="{{id}}">
+  
+  <button class="ui button" type="submit">Valider</button>
+  
+</form>
+{{/master}}
+
+{{> /partials/footer }}

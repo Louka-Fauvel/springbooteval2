@@ -1,0 +1,32 @@
+{{> /partials/header }}
+
+<h1>Maîtres</h1>
+
+<a href="/master/add" class="ui labeled icon green button"><i class="plus icon"></i>Ajouter un Maître</a>
+
+<table class="ui celled table">
+	<thead>
+   		<tr>
+    		<th>Prénom</th>
+    		<th>Nom</th>
+    		<th>Nombre de chien(s)</th>
+    		<th></th>
+		</tr>
+	</thead>
+  	<tbody>
+  		{{#masters}}
+    	<tr>
+      		<td>{{firstname}}</td>
+      		<td>{{lastname}}</td>
+      		<td>{{nbDogs}}</td>
+      		<td>
+      			<a href="/master/{{id}}" class="circular ui icon button">
+      				<i class="eye icon"></i>
+      			</a>
+      		</td>
+    	</tr>
+    	{{/masters}}
+  	</tbody>
+</table>
+
+{{> /partials/footer }}

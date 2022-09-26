@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -21,7 +22,8 @@ public class Dog {
 	@ManyToOne(optional = true)
 	private Master master;
 	
-	@ManyToMany(mappedBy = "dogs")
+	@ManyToMany
+	@JoinTable(name = "toy_dog")
 	private List<Toy> toys;
 	
 	public Dog() {

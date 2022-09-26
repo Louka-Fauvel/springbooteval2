@@ -1,0 +1,28 @@
+{{> /partials/header }}
+
+<h1>Maîtres</h1>
+
+<a href="/master/index" class="ui purple icon button">
+	<i class="angle left icon"></i>
+</a>
+
+{{#master}}
+
+<p><b>Prénom :</b> {{firstname}}</p>
+<p><b>Nom :</b> {{lastname}}</p>
+<p>
+	<b>Chien(s) :</b>
+	<ul>
+    {{#dogs}}
+		<li>{{name}}</li>
+    {{/dogs}}
+    
+    {{^dogs}}
+		Pas de chien
+    {{/dogs}}
+	</ul>
+</p>
+
+{{/master}}
+
+{{> /partials/footer }}

@@ -21,6 +21,8 @@ public class Master {
 	@OneToMany(mappedBy = "master")
 	private List<Dog> dogs;
 	
+	private int nbDogs;
+	
 	public Master() {
 		this("", "");
 	}
@@ -64,6 +66,10 @@ public class Master {
 		this.dogs = dogs;
 	}
 	
+	public int getNbDogs() {
+		return nbDogs = this.dogs.size();
+	}
+
 	public void acquireADog(String dogName) {
 		
 	}
