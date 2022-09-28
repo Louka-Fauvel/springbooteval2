@@ -2,12 +2,16 @@ package edu.caensup.sio.eval2.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.lang.NonNull;
 
 @Entity
@@ -22,10 +26,9 @@ public class Master {
 	@NonNull
 	private String lastname;
 	
-	@OneToMany(mappedBy = "master")
+	@OneToMany(mappedBy = "master", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	@Fetch(FetchMode.SUBSELECT)
 	private List<Dog> dogs;
-	
-	private int nbDogs;
 	
 	public Master() {
 		this("", "");
@@ -68,10 +71,6 @@ public class Master {
 
 	public void setDogs(List<Dog> dogs) {
 		this.dogs = dogs;
-	}
-	
-	public int getNbDogs() {
-		return nbDogs = this.dogs.size();
 	}
 
 	public void acquireADog(String dogName) {

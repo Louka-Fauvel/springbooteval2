@@ -1,19 +1,20 @@
 {{> /partials/header }}
 
-<h1>Ajouter un chien à un maître</h1>
+<h1>Ajouter un chien au maître {{#master}} {{firstname}} {{lastname}} {{/master}}</h1>
 
-<a href="/master/{{masterID}}" class="ui purple icon button">
+<a href="/master/{{idMaster}}" class="ui purple icon button">
 	<i class="angle left icon"></i>
 </a>
 
 
-<form class="ui form" method="post" action="/dog/{{masterID}}/add">
+<form class="ui form" method="post" action="/dog/{{idMaster}}/add">
   {{#dog}}
   <div class="field">
     <label>Nom</label>
     <input type="text" name="name" placeholder="Nom" value="{{name}}" required>
   </div>
   
+  <input type="hidden" name="master" value="{{idMaster}}">
   <input type="hidden" name="id" value="{{id}}">
   
   <button class="ui button" type="submit">Valider</button>

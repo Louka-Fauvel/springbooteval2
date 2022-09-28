@@ -14,7 +14,12 @@
 	<b>Chien(s) :</b>
 	<ul>
     {{#dogs}}
-		<li>{{name}}</li>
+		<li>
+			{{name}}
+			<a href="/dog/{{idMaster}}/delete/{{id}}" class="circular ui red icon button">
+      			<i class="trash icon"></i>
+			</a>
+		</li>
     {{/dogs}}
     
     {{^dogs}}
@@ -23,7 +28,7 @@
 	</ul>
 </p>
 
-<a href="/dog/{{id}}/add" class="ui labeled icon green button">
+<a href="/dog/{{idMaster}}/add" class="ui labeled icon green button">
 	<i class="plus icon"></i>Ajouter un Chien
 </a>
 

@@ -13,6 +13,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import edu.caensup.sio.eval2.models.Dog;
 import edu.caensup.sio.eval2.models.Master;
 import edu.caensup.sio.eval2.repositories.IDogDAO;
+import edu.caensup.sio.eval2.repositories.IMasterDAO;
 
 @Controller
 @RequestMapping("/dog")
@@ -21,19 +22,36 @@ public class DogController {
 	@Autowired
 	private IDogDAO DogDAO;
 	
-	@GetMapping("/{id}/add")
-	public String addDogMaster(ModelMap model, ModelMap masterID, @PathVariable int id) {
-		masterID.put("masterID", id);
+	@Autowired
+	private IMasterDAO MasterDAO;
+	
+	@GetMapping("/{idMaster}/add")
+	public String addDogMaster(ModelMap model, ModelMap masterID, @PathVariable int idMaster) {
+		
+		MasterDAO.findById(idMaster).ifPresent((master) -> {
+			masterID.put("master", master);
+		});
+		
 		model.put("dog", new Dog());
 		return "/dogs/form";
 		
 	}
 	
-	@PostMapping("/{id}/add")
-	public RedirectView addDogMaster(@ModelAttribute Dog dog, @PathVariable Master id) {
-		dog.setMaster(id);
+	@PostMapping("/{idMaster}/add")
+	public RedirectView addDogMaster(@ModelAttribute Dog dog, @PathVariable int idMaster) {
+		
 		DogDAO.save(dog);
-		return new RedirectView("/master/{id}");
+		return new RedirectView("/master/{idMaster}");
+		
+	}
+	
+	@GetMapping("/{idMaster}/delete/{idDog}")
+	public RedirectView deleteDogMaster(@PathVariable int idMaster, @PathVariable int idDog) {
+		
+		DogDAO.findById(idDog).ifPresent(dog -> {
+			DogDAO.delete(dog);
+		});
+		return new RedirectView("/master/{idMaster}");
 		
 	}
 	

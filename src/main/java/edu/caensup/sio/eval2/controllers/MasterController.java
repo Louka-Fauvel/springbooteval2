@@ -47,10 +47,10 @@ public class MasterController {
 		
 	}
 	
-	@GetMapping("/{id}")
-	public String infoMaster(ModelMap model, @PathVariable int id) {
+	@GetMapping("/{idMaster}")
+	public String infoMaster(ModelMap model, @PathVariable int idMaster) {
 		
-		MasterDAO.findById(id).ifPresent(master -> model.put("master", master));
+		MasterDAO.findById(idMaster).ifPresent(master -> model.put("master", master));
 		return "/masters/info";
 		
 	}
